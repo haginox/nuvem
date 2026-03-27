@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #050510;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.cena {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Nuvem Principal */
+.nuvem {
+    position: absolute;
+    top: 50px;
+    width: 200px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50px;
+    z-index: 10;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
+}
+
+.nuvem::after, .nuvem::before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.nuvem::after { width: 100px; height: 100px; top: -50px; left: 30px; }
+.nuvem::before { width: 120px; height: 120px; top: -70px; right: 20px; }
+
+/* Reflexo da Nuvem no Chão */
+.reflexo {
+    top: auto;
+    bottom: 50px;
+    opacity: 0.1;
+    filter: blur(8px);
+    transform: scaleY(-1); /* Inverte a nuvem */
+}
+
+/* Chão */
+.chao {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20vh;
+    background: linear-gradient(transparent, rgba(0, 212, 255, 0.1));
+    border-top: 1px solid rgba(0, 212, 255, 0.2);
+    z-index: 5;
+}
+
+/* Letra em queda */
+.letra {
+    position: absolute;
+    color: #00d4ff;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    pointer-events: none;
+    text-shadow: 0 0 8px #00d4ff;
+    z-index: 8;
+}
+
+/* Efeito de Pingo (Splash) */
+.pingo {
+    position: absolute;
+    border: 1px solid rgba(0, 212, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: expandir 0.4s ease-out forwards;
+    z-index: 6;
+}
+
+@keyframes expandir {
+    0% { width: 0; height: 0; opacity: 1; }
+    100% { width: 60px; height: 15px; opacity: 0; }
+}
